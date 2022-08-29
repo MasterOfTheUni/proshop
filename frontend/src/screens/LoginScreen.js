@@ -4,7 +4,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import FormConatiner from '../components/FormConatiner'
+import FormConatiner from '../components/FormContainer'
 import { login } from '../actions/userActions'
 
 
