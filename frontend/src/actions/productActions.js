@@ -23,6 +23,7 @@ import {
     PRODUCT_TOP_SUCCESS,
     PRODUCT_TOP_FAIL,
 } from '../constants/productConstants'
+import { logout } from './userActions'
 
 export const listProducts = () => async (dispatch) => {
     try {
@@ -107,6 +108,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
   }
   
   export const createProduct = () => async (dispatch, getState) => {
+    console.log("createProduct")
     try {
       dispatch({
         type: PRODUCT_CREATE_REQUEST,

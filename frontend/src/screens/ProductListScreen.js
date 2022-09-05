@@ -5,13 +5,13 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listProducts, deleteProduct, createProduct } from '../actions/userActions'
+import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
 
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = () => {
 
-    const { id } = useParams()
+  const { id } = useParams()
   
   const navigate = useNavigate()  
   
@@ -27,11 +27,12 @@ const ProductListScreen = () => {
     success: successDelete 
   } = productDelete
 
-  const productCreate = useSelector((state) => state.productDelete)
+  const productCreate = useSelector((state) => state.productCreate)
   const { 
     loading: loadingCreate, 
     error: errorCreate, 
-    success: successCreate 
+    success: successCreate, 
+    product: createdProduct 
   } = productCreate
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -45,14 +46,15 @@ const ProductListScreen = () => {
     }
 
     if (successCreate) {
-      navigate(`/admin/product/${createProduct._id}/edit`)
+      navigate(`/admin/product/${createdProduct._id}/edit`)
     } else {
       dispatch(listProducts())
     }
 
-  }, [dispatch, navigate, , userInfo, successDelete, successCreate, createProduct])
+  }, [dispatch, navigate, , userInfo, successDelete, successCreate, createdProduct])
 
   const createProductHandler = () => {
+    console.log("Clicked")
     dispatch(createProduct())
   }
 
