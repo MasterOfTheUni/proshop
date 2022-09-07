@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,8 +10,6 @@ import { listProducts, deleteProduct, createProduct } from '../actions/productAc
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = () => {
-
-  const { id } = useParams()
   
   const navigate = useNavigate()  
   
@@ -51,7 +49,7 @@ const ProductListScreen = () => {
       dispatch(listProducts())
     }
 
-  }, [dispatch, navigate, , userInfo, successDelete, successCreate, createdProduct])
+  }, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct])
 
   const createProductHandler = () => {
     console.log("Clicked")
